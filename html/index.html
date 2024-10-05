@@ -4,274 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tudo sobre C</title>
+    <meta name="description" content="Tudo ou quase tudo que você precisa aprender em liguagem C.">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
+    <header>
+        <h1>Tudo sobre C</h1>
+        <p>Configuração de ambiente, conceitos fundamentais e uso de bibliotecas em C.</p>
+    </header>
+
     <main>
 
-        <h1>Tudo sobre C.</h1>
-
-        <h2>Configuração do Ambiente</h2>
-
-            <p>
-                Instale um compilador: Para Windows, você pode usar o MinGW ou o TDM-GCC. No Linux, o GCC geralmente já está instalado ou pode ser facilmente instalado. No meu caso usei WSL2 e instalei o GCC no Arch usando: 
-            </p>
-
-                <pre>
-                    <code>yay -S gcc</code>
-                </pre>
-
-                    <p>outras variações para pacman e apt:</p>
-
-                <pre>
-                    <code>pacman -S gcc</code>
-                    <code>sudo apt install gcc</code>
-                </pre>
+        <section>
+            <h2>Configuração do Ambiente</h2>
+            <p>Instale um <a href="../pages/compiladores.html">compilador</a>: Para Windows, você pode usar o MinGW ou o TDM-GCC. No Linux, o GCC geralmente já está instalado ou pode ser facilmente instalado. No meu caso, usei WSL2 e instalei o GCC no Arch usando:</p>
             
-        <h2>Conceitos fundamentais</h2>
+            <pre><code>yay -S gcc</code></pre>
 
-            <p>
-                A função <code>main()</code> é um conceito fundamental na linguagem C (e em muitas outras linguagens de programação) porque é o ponto de entrada para a execução do programa. Aqui estão algumas razões pelas quais você só pode ter uma função <code>main()</code>:
-            </p>
+            <p>Outras variações para <code>pacman</code> e <code>apt</code>:</p>
 
-        <h2>1. Ponto de Entrada Único</h2>
+            <pre><code>pacman -S gcc</code></pre>
+            <pre><code>sudo apt install gcc</code></pre>
+        </section>
 
-            <p>
-                A função <code>main()</code> é onde a execução do programa começa. Quando você executa um programa em C, o sistema operacional procura a função <code>main()</code> para iniciar a execução. Se houvesse múltiplas definições da função <code>main()</code>, o sistema não saberia qual delas usar como ponto de partida, resultando em confusão e erros.
-            </p>
+        <section>
+            <h2>Conceitos Fundamentais</h2>
+            <p>A função <code>main()</code> é um conceito fundamental na linguagem C (e em muitas outras linguagens de programação) porque é o ponto de entrada para a execução do programa. Aqui estão algumas razões pelas quais você só pode ter uma função <code>main()</code>:</p>
 
-        <h2>2. Normas da Linguagem</h2>
+            <h3>1. Ponto de Entrada Único</h3>
+            <p>A função <code>main()</code> é onde a execução do programa começa. Quando você executa um programa em C, o sistema operacional procura a função <code>main()</code> para iniciar a execução. Se houvesse múltiplas definições da função <code>main()</code>, o sistema não saberia qual delas usar como ponto de partida, resultando em confusão e erros.</p>
+
+            <h3>2. Normas da Linguagem</h3>
+            <p>A linguagem C foi projetada com uma estrutura simples, e ter um único ponto de entrada mantém essa simplicidade. As especificações da linguagem definem que a função <code>main()</code> deve ser única para garantir a consistência no comportamento do programa.</p>
             
-            <p>
-                A linguagem C foi projetada com uma estrutura simples, e ter um único ponto de entrada mantém essa simplicidade.
-                As especificações da linguagem definem que a função <code>main()</code> deve ser única para garantir a consistência no comportamento do programa.
-            </p>
-        
-        <h2>3. Organização do Código</h2>
+            <h3>3. Organização do Código</h3>
+            <p>Ter apenas uma função <code>main()</code> ajuda a manter o código mais organizado e legível. Se cada parte do programa tivesse seu próprio ponto de entrada, isso complicaria a estrutura do código.</p>
             
-            <p>
-                Ter apenas uma função <code>main()</code> ajuda a manter o código mais organizado e legível. Se cada parte do programa tivesse seu próprio ponto de entrada, isso complicaria a estrutura do código.
-            </p>
-        
-        <h2>4. Gerenciamento de Memória e Contexto</h2>
-            
-            <p>
-                Quando o programa inicia, o ambiente de execução é configurado com o contexto da função <code>main()</code>. Se houvesse várias funções <code>main()</code>, o gerenciamento desse contexto se tornaria complexo e propenso a erros.
-            </p>
+            <h3>4. Gerenciamento de Memória e Contexto</h3>
+            <p>Quando o programa inicia, o ambiente de execução é configurado com o contexto da função <code>main()</code>. Se houvesse várias funções <code>main()</code>, o gerenciamento desse contexto se tornaria complexo e propenso a erros.</p>
 
             <h3>Exemplo de Estrutura Correta</h3>
-            
-                <p>Aqui está uma estrutura típica de um programa em C que ilustra como <code>main()</code> é usada:</p>
-            
-                <pre>
-                    <code>
-                        #include &lt;stdio.h&gt;
-                        int <code>main()</code> {
-                                Código do programa vai aqui
-                            printf("Hello, World!\n");
-                            return 0;
-                        }
-                    </code>
-                </pre>
+            <p>Aqui está uma estrutura típica de um programa em C que ilustra como <code>main()</code> é usada:</p>
+            <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    // Código do programa vai aqui
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
 
-            <h3>Alternativas</h3> 
+            <h3>Alternativas</h3>
+            <p>Se você quiser organizar seu código em múltiplas funções, você pode fazer isso, mas ainda precisa ter apenas uma função <code>main()</code> que chama essas outras funções. Por exemplo:</p>
+            <pre><code>
+#include &lt;stdio.h&gt;
+void sayHello() {
+    printf("Hello, World!\n");
+}
+int main() {
+    sayHello();  // Chama a função sayHello
+    return 0;
+}</code></pre>
 
-                <p>
-                    Se você quiser organizar seu código em múltiplas funções, você pode fazer isso, mas ainda precisa ter apenas uma função <code>main()</code> que chama essas outras funções. Por exemplo:
-                </p>
-        
-                <pre>
-                    <code>
-                        #include &lt;stdio.h&gt;
-                        void sayHello() {
-                            printf("Hello, World!\n");
-                        }
-                        int <code>main()</code> {
-                            sayHello();  Chama a função sayHello
-                            return 0;
-                        }
-                    </code>
-                </pre>
-        
-                <p>
-                    Nesse exemplo, <code>sayHello()</code> é uma função adicional que é chamada a partir da função <code>main()</code>. Dessa forma, você mantém a estrutura do programa organizada enquanto ainda segue a regra de ter uma única função <code>main()</code>.
-                </p>
-        
-        <p>
-            #include &lt;stdio.h&gt; é uma diretiva de <a href="../pages/pre-processador.html">pré-processador</a> em C que inclui o cabeçalho da biblioteca padrão de entrada e saída (Standard InputOutput). Essa biblioteca fornece funções essenciais que permitem ao programador realizar operações de entrada e saída, como leitura e escrita no console ou em arquivos.
-        </p>
-        
-        
-        
-            <p>
-                As bibliotecas em programação são coleções de código pré-escrito que podem ser usadas para realizar funções comuns, evitando que os programadores tenham que escrever esse código do zero. Elas oferecem uma maneira eficiente de reutilizar código, melhorar a organização do programa e acelerar o desenvolvimento. Aqui está uma visão mais detalhada sobre bibliotecas, suas funções e como são feitas.
-            </p>
-        
-        <h2>O que são Bibliotecas?</h2>
-        
-            <p>
-                Coleções de Funções: Bibliotecas são coleções de funções, classes e outros recursos que podem ser utilizados em programas. Elas são geralmente agrupadas em arquivos que podem ser incluídos no código do programa.
-                Abstração: Elas permitem que os desenvolvedores usem funcionalidades complexas sem precisar entender todos os detalhes de sua implementação.
-                Para que Servem?
-            </p>
-        
-            <h3>As bibliotecas têm várias utilidades:</h3>
-        
-                    <p>
-                        Reutilização de Código: Elas permitem que o código seja reutilizado em diferentes projetos, evitando duplicação de esforços.
-                    </p>
+            <p>Nesse exemplo, <code>sayHello()</code> é uma função adicional que é chamada a partir da função <code>main()</code>. Dessa forma, você mantém a estrutura do programa organizada enquanto ainda segue a regra de ter uma única função <code>main()</code>.</p>
+        </section>
 
-                    <p>
-                        Facilidade de Uso: Ao usar uma biblioteca, os desenvolvedores podem acessar funcionalidades complexas de maneira simplificada.
-                    </p>
-        
-                    <p>
-                        Eficiência: O uso de bibliotecas bem testadas pode melhorar a eficiência e a performance dos programas, pois elas frequentemente implementam algoritmos otimizados.
-                    </p>
-        
-                    <p>
-                        Organização do Código: Elas ajudam a organizar o código em módulos, tornando-o mais legível e fácil de manter.
-                    </p>
-        
-                    <p>
-                        Interoperabilidade: Algumas bibliotecas facilitam a integração com outros sistemas, como bancos de dados ou APIs.
-                    </p>
-        
-        <h2>Tipos de Bibliotecas</h2>
-        
-            <h3>Bibliotecas Estáticas:</h3>
-        
-                <p>
-                    O código da biblioteca é incorporado diretamente no executável do programa durante a compilação.
-                    Extensão comum: .a (em Unix) ou .lib (em Windows).
-                </p>
-        
-            <h3>Bibliotecas Dinâmicas (ou Compartilhadas):</h3>
-        
-                <p>
-                    O código da biblioteca é carregado em tempo de execução, o que permite que vários programas usem a mesma biblioteca simultaneamente.
-                    Extensão comum: .so (em Unix) ou .dll (em Windows).
-                </p>
-        
-        <h2>Como São Feitas?</h2>
+        <section>
+            <h2>Pré-processador</h2>
+            <p><code>#include &lt;stdio.h&gt;</code> é uma diretiva de <a href="../pages/pre-processadores.html">pré-processador</a> em C que inclui o cabeçalho da biblioteca padrão de entrada e saída (Standard InputOutput). Essa biblioteca fornece funções essenciais que permitem ao programador realizar operações de entrada e saída, como leitura e escrita no console ou em arquivos.</p>
 
-            <h3>
-                O processo de criação de uma biblioteca geralmente envolve os seguintes passos:
-            </h3>
+            <p>As <a href="../pages/bibliotecas.html">bibliotecas</a> em programação são coleções de código pré-escrito que podem ser usadas para realizar funções comuns, evitando que os programadores tenham que escrever esse código do zero. Elas oferecem uma maneira eficiente de reutilizar código, melhorar a organização do programa e acelerar o desenvolvimento. Aqui está uma visão mais detalhada sobre bibliotecas, suas funções e como são feitas.</p>
+        </section>
 
-            <p>
-                Desenvolvimento do Código: Escrever o código-fonte que contém as funções e classes que você deseja incluir na biblioteca.
-            </p>
+        <section>
+            <h2>Definições de Macros</h2>
+            <p>Macros são definidas usando a diretiva <code>#define</code> e podem ser usadas para criar constantes ou expressões. Exemplo:</p>
+            <pre><code>#define PI 3.14</code></pre>
+            <p>As macros podem simplificar o código e torná-lo mais legível. No entanto, é importante usá-las com cuidado para evitar problemas de depuração e manutenção.</p>
+        </section>
 
-            <p>
-                Compilação: Compilar o código-fonte em um arquivo de objeto. Este arquivo contém o código compilado, mas não é um executável.
-            </p>
-
-            <h3>Exemplo para criar um arquivo de objeto:</h3>
-
-                <code>gcc -c minha_biblioteca.c -o minha_biblioteca.o</code>
-            
-                <h4>Criação da Biblioteca:</h4>
-
-                    <h5>Para bibliotecas estáticas:</h5>
-
-                        <code>ar rcs libminha_biblioteca.a minha_biblioteca.o</code>
-
-                    <h5>Para bibliotecas dinâmicas:</h5>
-
-                        <code>gcc -shared -o libminha_biblioteca.so minha_biblioteca.o</code>
-
-            <p>
-                Documentação: É uma boa prática documentar as funções e classes na biblioteca, explicando como usá-las.
-            </p>
-
-        <p>
-            Distribuição: A biblioteca pode ser distribuída como um arquivo separado (como .a ou .so) e acompanhada de arquivos de cabeçalho (.h) que contêm as declarações das funções e classes disponíveis na biblioteca.
-        </p>
-
-            <h3>Exemplo Simples</h3>
-                <p>
-                    Aqui está um exemplo simples de como você poderia criar uma biblioteca em C.
-                </p>
-
-                <h4>Arquivo de Implementação (minha_biblioteca.c):</h4>
-                    <pre>
-                        minha_biblioteca.c
-                        <code>
-                            #include &lt;stdio.h&gt;
-                            void ola_mundo() {
-                                printf("Olá, Mundo!\n");
-                            }
-                        </code>
-                    </pre>
-
-                <h4>Arquivo de Cabeçalho (minha_biblioteca.h):</h4>
-                    <pre>
-                        minha_biblioteca.h
-                        <code>
-                            #ifndef MINHA_BIBLIOTECA_H
-                            #define MINHA_BIBLIOTECA_H
-                            void ola_mundo();
-                            #endif
-                        </code>
-                    </pre>
-
-                <h4>Compilação e Criação da Biblioteca:</h4>
-
-                    <p>
-                        <code>gcc -c minha_biblioteca.c -o minha_biblioteca.o</code>
-                    </p>
-
-                    <p>
-                        <code>ar rcs libminha_biblioteca.a minha_biblioteca.o</code>
-                    </p>
-
-                <h4>Usando a Biblioteca em Outro Programa:</h4>
-                    <pre>
-                        programa.c
-                        <code>
-                            #include "minha_biblioteca.h"
-                            int <code>main()</code> {
-                                ola_mundo();
-                                return 0;
-                            }
-                        </code>
-                    </pre>
-                <h4>Compilação do Programa Usando a Biblioteca</h4>
-                    <code>gcc programa.c -L. -lminha_biblioteca -o programa</code>
-    
-        <h2>Resumo</h2>
-
-            <p>
-                Bibliotecas são coleções de código que facilitam a reutilização e organização de funções e classes.
-            </p>
-
-            <p>
-                Elas são utilizadas para aumentar a eficiência e a clareza do código.
-            </p>
-
-            <p>
-                O processo de criação envolve o desenvolvimento do código, compilação, criação da biblioteca e documentação.
-            </p>
-
-            <p>
-                Elas podem ser estáticas ou dinâmicas, dependendo de como são incorporadas nos programas.
-            </p>
-
-        <p>
-            Definições de Macros: O pré-processador permite que você defina macros usando #define. Essas macros podem ser substituídas no código onde são utilizadas. Por exemplo:
-        </p>
-
-        <code>#define PI 3.14</code>
-        
-        <p>
-            As definições de macros em C permitem que você defina constantes ou expressões que podem ser utilizadas em seu código, facilitando a manutenção e melhorando a legibilidade. Vamos explorar como funciona uma definição de macro e o exemplo do número PI.
-        </p>
-
-        <h2>Definições de Macros</h2>
-        
-            <p>
-                A diretiva #define é usada para definir uma macro. A sintaxe é a seguinte:
-            </p>
     </main>
+
+    <footer>
+        <p>&copy; 2024 - Tudo sobre C</p>
+    </footer>
 </body>
 </html>

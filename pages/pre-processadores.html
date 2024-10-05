@@ -3,74 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explicação sobre pré-processadores em C, suas funções e exemplos de uso.">
+    <meta name="description" content="Explicação sobre pré-processadores, suas funções, como são usados e exemplos de uso.">
     <meta name="author" content="José Augusto Silva de Aquino">
-    <title>Pré-processadores em C</title>
+    <title>O que é um Pré-Processador?</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header>
-        <h1>Pré-processadores em C</h1>
-        <p>Entenda o que são, para que servem e como utilizar pré-processadores em C.</p>
+        <h1>Pré-Processador</h1>
+        <p>Entenda o que são pré-processadores, para que servem e como utilizá-los.</p>
     </header>
 
     <main>
         <section>
-            <h2>O que são os Pré-processadores?</h2>
-            <p>Os pré-processadores em C são ferramentas que processam o código fonte <strong>antes</strong> de ele ser enviado ao compilador. Eles manipulam o código de acordo com as diretivas que começam com o símbolo <code>#</code>, como <code>#include</code> e <code>#define</code>.</p>
+            <h2>O que é um Pré-Processador?</h2>
+            <p>Um pré-processador é uma ferramenta que processa o código-fonte antes da compilação. Ele realiza substituições de texto, inclusões de arquivos e outras manipulações de código, preparando-o para a etapa de compilação.</p>
         </section>
 
         <section>
-            <h2>Para que servem?</h2>
-            <p>Os pré-processadores servem para preparar o código para a compilação, realizando tarefas como:</p>
+            <h2>Para que Serve?</h2>
+            <p>Os pré-processadores servem para:</p>
             <ul>
-                <li><strong>Inclusão de arquivos:</strong> Adicionar bibliotecas ou cabeçalhos necessários ao código.</li>
-                <li><strong>Definição de constantes e macros:</strong> Facilitar o uso de valores constantes e códigos reutilizáveis.</li>
-                <li><strong>Compilação condicional:</strong> Controlar a inclusão/exclusão de partes do código com base em condições.</li>
-                <li><strong>Outras diretivas:</strong> Controlar a compilação com regras específicas, como <code>#pragma</code>.</li>
+                <li><strong>Inclusão de Arquivos:</strong> Permitem incluir o conteúdo de um arquivo em outro, facilitando a modularização do código.</li>
+                <li><strong>Definição de Macros:</strong> Possibilitam a definição de macros que podem ser usadas para simplificar o código e evitar duplicação.</li>
+                <li><strong>Condicionais:</strong> Permitem a inclusão ou exclusão de partes do código com base em condições específicas, facilitando a portabilidade e personalização.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Como é usado?</h2>
-            <p>Os pré-processadores são usados por meio de diretivas que influenciam o comportamento do código:</p>
+            <h2>Como é Usado?</h2>
+            <p>O uso de pré-processadores envolve as seguintes etapas:</p>
             <ul>
-                <li><strong>Inclusão de arquivos:</strong> <code>#include &lt;stdio.h&gt;</code></li>
-                <li><strong>Definição de macros e constantes:</strong> <code>#define PI 3.14159</code></li>
-                <li><strong>Compilação condicional:</strong> <code>#ifdef DEBUG</code></li>
+                <li><strong>Escrita do Código:</strong> O programador escreve o código com diretivas do pré-processador (por exemplo, <code>#include</code>, <code>#define</code>).</li>
+                <li><strong>Pré-Processamento:</strong> O pré-processador é executado, processando as diretivas e gerando um código-fonte que é então enviado ao compilador.</li>
+                <li><strong>Compilação:</strong> O código gerado é compilado para gerar o arquivo executável.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Exemplo de Código</h2>
-            <p>Este é um exemplo de código C utilizando pré-processadores:</p>
+            <h2>Como Funciona?</h2>
+            <p>O funcionamento de um pré-processador geralmente envolve as seguintes etapas:</p>
+            <ul>
+                <li><strong>Leitura do Código-Fonte:</strong> O pré-processador lê o código-fonte e identifica as diretivas.</li>
+                <li><strong>Substituições:</strong> Substitui macros por seus valores correspondentes e inclui arquivos solicitados.</li>
+                <li><strong>Remoção de Comentários:</strong> Remove comentários do código para simplificar o código resultante.</li>
+                <li><strong>Geração de Código Pré-Processado:</strong> O código-fonte resultante é gerado e passado para o compilador.</li>
+            </ul>
+        </section>
 
-            <pre><code class="language-c">
-// Inclui a biblioteca padrão de entrada/saída
-#include &lt;stdio.h&gt;
+        <section>
+            <h2>Exemplo de Uso de Pré-Processador</h2>
+            <p>Aqui está um exemplo simples de como usar um pré-processador em C.</p>
 
-// Define uma constante e uma macro
-#define PI 3.14159
-#define CIRCUNFERENCIA(raio) (2 * PI * (raio))
+            <h3>Arquivo de Cabeçalho (minha_biblioteca.h):</h3>
+            <pre><code>#ifndef MINHA_BIBLIOTECA_H
+#define MINHA_BIBLIOTECA_H
+void ola_mundo();
+#endif</code></pre>
+
+            <h3>Arquivo de Implementação (minha_biblioteca.c):</h3>
+            <pre><code>#include <stdio.h>
+#include "minha_biblioteca.h"
+
+void ola_mundo() {
+    printf("Olá, Mundo!\n");
+}</code></pre>
+
+            <h3>Uso da Biblioteca:</h3>
+            <pre><code>#include <stdio.h>
+#include "minha_biblioteca.h"
 
 int main() {
-    float raio = 5.0;
-
-    #ifdef DEBUG
-        printf("Raio: %f\n", raio);
-    #endif
-    
-    printf("Circunferência: %f\n", CIRCUNFERENCIA(raio));
-
+    ola_mundo();  // Chama a função ola_mundo
     return 0;
-}
-            </code></pre>
+}</code></pre>
+
+            <h3>Compilação do Programa:</h3>
+            <pre><code>gcc programa.c minha_biblioteca.c -o programa</code></pre>
         </section>
 
         <section>
             <h2>Conclusão</h2>
-            <p>Os pré-processadores de C desempenham um papel essencial na preparação do código antes da compilação, facilitando a inclusão de arquivos, definição de constantes, uso de macros e compilação condicional, além de outras funcionalidades avançadas.</p>
+            <p>Os pré-processadores são ferramentas essenciais que facilitam a manipulação do código-fonte antes da compilação, permitindo uma maior modularidade, flexibilidade e legibilidade no desenvolvimento de software. Eles desempenham um papel importante na programação em C e em muitas outras linguagens.</p>
         </section>
+
+        <a href="../html/index.html">Voltar para página principal.</a>
     </main>
 
     <footer>

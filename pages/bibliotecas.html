@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explicação sobre bibliotecas em programação, suas funções e como criar e usar bibliotecas em C.">
+    <meta name="author" content="José Augusto Silva de Aquino">
+    <title>O que são Bibliotecas?</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bibliotecas</h1>
+        <p>Entenda o que são bibliotecas em programação, suas funções e como utilizá-las.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>O que são Bibliotecas?</h2>
+            <p>Bibliotecas são coleções de funções, classes e outros recursos que podem ser utilizados em programas. Elas permitem que os desenvolvedores usem funcionalidades complexas sem precisar entender todos os detalhes de sua implementação.</p>
+        </section>
+
+        <section>
+            <h2>Para que Servem?</h2>
+            <p>As bibliotecas têm várias utilidades:</p>
+            <ul>
+                <li><strong>Reutilização de Código:</strong> Elas permitem que o código seja reutilizado em diferentes projetos, evitando duplicação de esforços.</li>
+                <li><strong>Facilidade de Uso:</strong> Ao usar uma biblioteca, os desenvolvedores podem acessar funcionalidades complexas de maneira simplificada.</li>
+                <li><strong>Eficiência:</strong> O uso de bibliotecas bem testadas pode melhorar a eficiência e a performance dos programas, pois frequentemente implementam algoritmos otimizados.</li>
+                <li><strong>Organização do Código:</strong> Elas ajudam a organizar o código em módulos, tornando-o mais legível e fácil de manter.</li>
+                <li><strong>Interoperabilidade:</strong> Algumas bibliotecas facilitam a integração com outros sistemas, como bancos de dados ou APIs.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Tipos de Bibliotecas</h2>
+            <p>As bibliotecas podem ser classificadas em:</p>
+            <ul>
+                <li><strong>Bibliotecas Estáticas:</strong> O código da biblioteca é incorporado diretamente no executável do programa durante a compilação. Extensão comum: <code>.a</code> (em Unix) ou <code>.lib</code> (em Windows).</li>
+                <li><strong>Bibliotecas Dinâmicas:</strong> O código da biblioteca é carregado em tempo de execução, permitindo que vários programas usem a mesma biblioteca simultaneamente. Extensão comum: <code>.so</code> (em Unix) ou <code>.dll</code> (em Windows).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Como São Feitas?</h2>
+            <p>O processo de criação de uma biblioteca geralmente envolve os seguintes passos:</p>
+            <ol>
+                <li><strong>Desenvolvimento do Código:</strong> Escrever o código-fonte que contém as funções e classes que você deseja incluir na biblioteca.</li>
+                <li><strong>Compilação:</strong> Compilar o código-fonte em um arquivo de objeto. Exemplo:</li>
+                <pre><code>gcc -c minha_biblioteca.c -o minha_biblioteca.o</code></pre>
+                <li><strong>Criação da Biblioteca:</strong>
+                    <ul>
+                        <li><strong>Para bibliotecas estáticas:</strong>
+                            <pre><code>ar rcs libminha_biblioteca.a minha_biblioteca.o</code></pre>
+                        </li>
+                        <li><strong>Para bibliotecas dinâmicas:</strong>
+                            <pre><code>gcc -shared -o libminha_biblioteca.so minha_biblioteca.o</code></pre>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Documentação:</strong> É uma boa prática documentar as funções e classes na biblioteca.</li>
+                <li><strong>Distribuição:</strong> A biblioteca pode ser distribuída como um arquivo separado (como <code>.a</code> ou <code>.so</code>) e acompanhada de arquivos de cabeçalho (<code>.h</code>).</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Exemplo Simples</h2>
+            <p>Aqui está um exemplo simples de como você poderia criar uma biblioteca em C.</p>
+
+            <h3>Arquivo de Implementação (minha_biblioteca.c):</h3>
+            <pre><code>#include <stdio.h>
+void ola_mundo() {
+    printf("Olá, Mundo!\n");
+}</code></pre>
+
+            <h3>Arquivo de Cabeçalho (minha_biblioteca.h):</h3>
+            <pre><code>#ifndef MINHA_BIBLIOTECA_H
+#define MINHA_BIBLIOTECA_H
+void ola_mundo();
+#endif</code></pre>
+
+            <h3>Como Usar a Biblioteca:</h3>
+            <pre><code>#include "minha_biblioteca.h"
+int main() {
+    ola_mundo();  // Chama a função ola_mundo
+    return 0;
+}</code></pre>
+
+            <h3>Compilação do Programa Usando a Biblioteca:</h3>
+            <pre><code>gcc programa.c -L. -lminha_biblioteca -o programa</code></pre>
+        </section>
+
+        <section>
+            <h2>Conclusão</h2>
+            <p>As bibliotecas são fundamentais no desenvolvimento de software, permitindo que os desenvolvedores reutilizem código e utilizem funcionalidades complexas de maneira eficiente. Saber como criar e usar bibliotecas é uma habilidade valiosa para qualquer programador.</p>
+        </section>
+
+        <a href="../html/index.html">Voltar para página principal.</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Desenvolvido por José Augusto (Gutosilqui) Silva de Aquino</p>
+    </footer>
+</body>
+</html>
