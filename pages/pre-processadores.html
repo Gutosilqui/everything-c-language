@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explicação sobre pré-processadores em C, suas funções e exemplos de uso.">
+    <meta name="author" content="José Augusto Silva de Aquino">
+    <title>Pré-processadores em C</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pré-processadores em C</h1>
+        <p>Entenda o que são, para que servem e como utilizar pré-processadores em C.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>O que são os Pré-processadores?</h2>
+            <p>Os pré-processadores em C são ferramentas que processam o código fonte <strong>antes</strong> de ele ser enviado ao compilador. Eles manipulam o código de acordo com as diretivas que começam com o símbolo <code>#</code>, como <code>#include</code> e <code>#define</code>.</p>
+        </section>
+
+        <section>
+            <h2>Para que servem?</h2>
+            <p>Os pré-processadores servem para preparar o código para a compilação, realizando tarefas como:</p>
+            <ul>
+                <li><strong>Inclusão de arquivos:</strong> Adicionar bibliotecas ou cabeçalhos necessários ao código.</li>
+                <li><strong>Definição de constantes e macros:</strong> Facilitar o uso de valores constantes e códigos reutilizáveis.</li>
+                <li><strong>Compilação condicional:</strong> Controlar a inclusão/exclusão de partes do código com base em condições.</li>
+                <li><strong>Outras diretivas:</strong> Controlar a compilação com regras específicas, como <code>#pragma</code>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Como é usado?</h2>
+            <p>Os pré-processadores são usados por meio de diretivas que influenciam o comportamento do código:</p>
+            <ul>
+                <li><strong>Inclusão de arquivos:</strong> <code>#include &lt;stdio.h&gt;</code></li>
+                <li><strong>Definição de macros e constantes:</strong> <code>#define PI 3.14159</code></li>
+                <li><strong>Compilação condicional:</strong> <code>#ifdef DEBUG</code></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Exemplo de Código</h2>
+            <p>Este é um exemplo de código C utilizando pré-processadores:</p>
+
+            <pre><code class="language-c">
+// Inclui a biblioteca padrão de entrada/saída
+#include &lt;stdio.h&gt;
+
+// Define uma constante e uma macro
+#define PI 3.14159
+#define CIRCUNFERENCIA(raio) (2 * PI * (raio))
+
+int main() {
+    float raio = 5.0;
+
+    #ifdef DEBUG
+        printf("Raio: %f\n", raio);
+    #endif
+    
+    printf("Circunferência: %f\n", CIRCUNFERENCIA(raio));
+
+    return 0;
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Conclusão</h2>
+            <p>Os pré-processadores de C desempenham um papel essencial na preparação do código antes da compilação, facilitando a inclusão de arquivos, definição de constantes, uso de macros e compilação condicional, além de outras funcionalidades avançadas.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Desenvolvido por José Augusto (Gutosilqui) Silva de Aquino</p>
+    </footer>
+</body>
+</html>

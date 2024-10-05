@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,43 +10,62 @@
 
         <h1>Tudo sobre C.</h1>
 
+        <h2>Configuração do Ambiente</h2>
+
             <p>
-                A função main() é um conceito fundamental na linguagem C (e em muitas outras linguagens de programação) porque é o ponto de entrada para a execução do programa. Aqui estão algumas razões pelas quais você só pode ter uma função main():
+                Instale um compilador: Para Windows, você pode usar o MinGW ou o TDM-GCC. No Linux, o GCC geralmente já está instalado ou pode ser facilmente instalado. No meu caso usei WSL2 e instalei o GCC no Arch usando: 
+            </p>
+
+                <pre>
+                    <code>yay -S gcc</code>
+                </pre>
+
+                    <p>outras variações para pacman e apt:</p>
+
+                <pre>
+                    <code>pacman -S gcc</code>
+                    <code>sudo apt install gcc</code>
+                </pre>
+            
+        <h2>Conceitos fundamentais</h2>
+
+            <p>
+                A função <code>main()</code> é um conceito fundamental na linguagem C (e em muitas outras linguagens de programação) porque é o ponto de entrada para a execução do programa. Aqui estão algumas razões pelas quais você só pode ter uma função <code>main()</code>:
             </p>
 
         <h2>1. Ponto de Entrada Único</h2>
 
             <p>
-                A função main() é onde a execução do programa começa. Quando você executa um programa em C, o sistema operacional procura a função main() para iniciar a execução. Se houvesse múltiplas definições da função main(), o sistema não saberia qual delas usar como ponto de partida, resultando em confusão e erros.
+                A função <code>main()</code> é onde a execução do programa começa. Quando você executa um programa em C, o sistema operacional procura a função <code>main()</code> para iniciar a execução. Se houvesse múltiplas definições da função <code>main()</code>, o sistema não saberia qual delas usar como ponto de partida, resultando em confusão e erros.
             </p>
 
         <h2>2. Normas da Linguagem</h2>
             
             <p>
                 A linguagem C foi projetada com uma estrutura simples, e ter um único ponto de entrada mantém essa simplicidade.
-                As especificações da linguagem definem que a função main() deve ser única para garantir a consistência no comportamento do programa.
+                As especificações da linguagem definem que a função <code>main()</code> deve ser única para garantir a consistência no comportamento do programa.
             </p>
         
         <h2>3. Organização do Código</h2>
             
             <p>
-                Ter apenas uma função main() ajuda a manter o código mais organizado e legível. Se cada parte do programa tivesse seu próprio ponto de entrada, isso complicaria a estrutura do código.
+                Ter apenas uma função <code>main()</code> ajuda a manter o código mais organizado e legível. Se cada parte do programa tivesse seu próprio ponto de entrada, isso complicaria a estrutura do código.
             </p>
         
         <h2>4. Gerenciamento de Memória e Contexto</h2>
             
             <p>
-                Quando o programa inicia, o ambiente de execução é configurado com o contexto da função main(). Se houvesse várias funções main(), o gerenciamento desse contexto se tornaria complexo e propenso a erros.
+                Quando o programa inicia, o ambiente de execução é configurado com o contexto da função <code>main()</code>. Se houvesse várias funções <code>main()</code>, o gerenciamento desse contexto se tornaria complexo e propenso a erros.
             </p>
 
             <h3>Exemplo de Estrutura Correta</h3>
             
-                <p>Aqui está uma estrutura típica de um programa em C que ilustra como main() é usada:</p>
+                <p>Aqui está uma estrutura típica de um programa em C que ilustra como <code>main()</code> é usada:</p>
             
                 <pre>
                     <code>
                         #include &lt;stdio.h&gt;
-                        int main() {
+                        int <code>main()</code> {
                                 Código do programa vai aqui
                             printf("Hello, World!\n");
                             return 0;
@@ -57,7 +76,7 @@
             <h3>Alternativas</h3> 
 
                 <p>
-                    Se você quiser organizar seu código em múltiplas funções, você pode fazer isso, mas ainda precisa ter apenas uma função main() que chama essas outras funções. Por exemplo:
+                    Se você quiser organizar seu código em múltiplas funções, você pode fazer isso, mas ainda precisa ter apenas uma função <code>main()</code> que chama essas outras funções. Por exemplo:
                 </p>
         
                 <pre>
@@ -66,7 +85,7 @@
                         void sayHello() {
                             printf("Hello, World!\n");
                         }
-                        int main() {
+                        int <code>main()</code> {
                             sayHello();  Chama a função sayHello
                             return 0;
                         }
@@ -74,24 +93,14 @@
                 </pre>
         
                 <p>
-                    Nesse exemplo, sayHello() é uma função adicional que é chamada a partir da função main(). Dessa forma, você mantém a estrutura do programa organizada enquanto ainda segue a regra de ter uma única função main().
+                    Nesse exemplo, <code>sayHello()</code> é uma função adicional que é chamada a partir da função <code>main()</code>. Dessa forma, você mantém a estrutura do programa organizada enquanto ainda segue a regra de ter uma única função <code>main()</code>.
                 </p>
         
         <p>
-            #include &lt;stdio.h&gt; é uma diretiva de pré-processador em C que inclui o cabeçalho da biblioteca padrão de entrada e saída (Standard InputOutput). Essa biblioteca fornece funções essenciais que permitem ao programador realizar operações de entrada e saída, como leitura e escrita no console ou em arquivos.
+            #include &lt;stdio.h&gt; é uma diretiva de <a href="../pages/pre-processador.html">pré-processador</a> em C que inclui o cabeçalho da biblioteca padrão de entrada e saída (Standard InputOutput). Essa biblioteca fornece funções essenciais que permitem ao programador realizar operações de entrada e saída, como leitura e escrita no console ou em arquivos.
         </p>
         
-        <h2>O que é um Pré-processador?</h2>
         
-            <p>
-                O pré-processador é uma ferramenta que processa o código fonte antes da compilação real do programa. Ele realiza uma série de operações de transformação e substituição no código, preparando-o para que o compilador possa compilar corretamente.
-            </p>
-        
-        <h2>Funções do Pré-processador</h2>
-        
-            <p>
-                Incluir Arquivos: O pré-processador pode incluir outros arquivos fonte, como bibliotecas, que contêm funções e definições necessárias. Por exemplo, #include &lt;stdio.h&gt; inclui a biblioteca padrão de entrada e saída.
-            </p>
         
             <p>
                 As bibliotecas em programação são coleções de código pré-escrito que podem ser usadas para realizar funções comuns, evitando que os programadores tenham que escrever esse código do zero. Elas oferecem uma maneira eficiente de reutilizar código, melhorar a organização do programa e acelerar o desenvolvimento. Aqui está uma visão mais detalhada sobre bibliotecas, suas funções e como são feitas.
@@ -221,7 +230,7 @@
                         programa.c
                         <code>
                             #include "minha_biblioteca.h"
-                            int main() {
+                            int <code>main()</code> {
                                 ola_mundo();
                                 return 0;
                             }
