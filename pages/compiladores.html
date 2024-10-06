@@ -17,7 +17,7 @@
     <main>
         <section>
             <h2>O que é um Compilador?</h2>
-            <p>Um compilador é um programa que traduz código-fonte escrito em uma linguagem de programação de alto nível (como C, C++, Java, etc.) para uma linguagem de máquina ou linguagem de baixo nível, que o computador pode entender e executar.</p>
+            <p>Um compilador é um programa que traduz código-fonte escrito em uma linguagem de programação de alto nível (como C, C++, Java, etc.) para uma linguagem de máquina ou linguagem de baixo nível(como Assembly e código de máquina (binário), etc), que o computador pode entender e executar.</p>
         </section>
 
         <section>
@@ -60,12 +60,22 @@
 
         <section>
             <h2>Diferenças entre GCC e Outros Compiladores</h2>
-            <ul>
-                <li><strong>Multi-linguagem:</strong> O GCC suporta várias linguagens de programação, enquanto outros compiladores podem ser específicos para uma única linguagem.</li>
-                <li><strong>Portabilidade:</strong> O GCC é altamente portátil e pode ser executado em diversas plataformas (Linux, Windows, macOS), enquanto outros compiladores podem ser limitados a um sistema operacional específico.</li>
-                <li><strong>Código Aberto:</strong> O GCC é um projeto de código aberto, permitindo que os desenvolvedores o modifiquem e distribuam. Muitos compiladores proprietários não oferecem essa flexibilidade.</li>
-                <li><strong>Otimização:</strong> O GCC é conhecido por suas técnicas avançadas de otimização, que podem produzir código muito eficiente.</li>
-            </ul>
+<ul>
+    <li><strong>Multi-linguagem:</strong> O GCC suporta várias linguagens de programação, enquanto outros compiladores podem ser específicos para uma única linguagem.</li>
+    <li><strong>Portabilidade:</strong> O GCC é altamente portátil e pode ser executado em diversas plataformas (Linux, Windows, macOS), enquanto outros compiladores podem ser limitados a um sistema operacional específico.</li>
+    <li><strong>Código Aberto:</strong> O GCC é um projeto de código aberto, permitindo que os desenvolvedores o modifiquem e distribuam. Muitos compiladores proprietários não oferecem essa flexibilidade.</li>
+    <li><strong>Otimização:</strong> O GCC é conhecido por suas técnicas avançadas de otimização, que podem produzir código muito eficiente.</li>
+</ul>
+
+<h3>Comparação com Outros Compiladores</h3>
+<ul>
+    <li><strong>MinGW:</strong> MinGW (Minimalist GNU for Windows) é uma variante do GCC voltada para o Windows. Ele usa a biblioteca MSVCRT, que permite gerar executáveis nativos para Windows sem dependências externas. No entanto, é mais limitado em comparação ao GCC padrão no Linux, especialmente em relação à compatibilidade com as ferramentas nativas do sistema.</li>
+    <li><strong>TDM-GCC:</strong> TDM-GCC é uma distribuição do GCC também voltada para Windows, focada na criação de binários estáticos e dinâmicos. Ele é projetado para ser fácil de instalar e configurar, e inclui melhorias voltadas especificamente para a compatibilidade com Windows. No entanto, sua manutenção pode ser menos ativa que a do MinGW ou GCC principal.</li>
+    <li><strong>Clang:</strong> Clang é um compilador que faz parte do projeto LLVM. Ele é amplamente conhecido por fornecer mensagens de erro mais claras e por ter uma arquitetura modular, o que facilita a personalização e otimização do processo de compilação. Clang também tem uma integração mais fácil com outras ferramentas e plataformas de desenvolvimento modernas, como macOS.</li>
+    <li><strong>MSVC (Microsoft Visual C++):</strong> Este é o compilador da Microsoft, integrado ao Visual Studio. É específico para o Windows e oferece uma ótima integração com as ferramentas da Microsoft. No entanto, por ser proprietário, não oferece a mesma flexibilidade de código aberto que o GCC e Clang.</li>
+    <li><strong>Intel C++ Compiler:</strong> Esse compilador é otimizado para processadores Intel e pode produzir código altamente otimizado para suas arquiteturas. No entanto, é proprietário e focado principalmente em desempenho em hardware Intel, o que pode limitá-lo em outras plataformas.</li>
+</ul>
+
         </section>
 
         <section>
